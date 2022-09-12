@@ -1,0 +1,49 @@
+*Commands
+npm i -g @angular/cli - to install all angular packages
+ng new crudcomp - creating new project
+
+*Installing bootstrap
+https://getbootstrap.com/
+
+import html and js bootstrap cdn's in index.html
+
+*creating component
+
+ng g c component name 
+
+html - 1
+css - 1
+ts - ts  converts into js behind the scene 
+Note:browser understands js script only
+spec.ts - testing
+
+1.create html file as per your design
+
+<!-- used directives -->
+
+*ngFor - interpolation and expression
+ngSubmit - submit the form data
+
+<!-- used controls -->
+
+import required form controls
+FormControl, FormGroupName,FormGroup 
+
+created one foem group with new object and pushed to empty array
+
+*click function
+
+Onsubmit() - form submit
+Onedit() - patching the previous data in input fields
+(indexSelectedtoEdit)
+Ondelete() - based on index splicing the list (indexSelectedtoEdit)
+Onsave() - pushing new data into form data object
+Oncancel() - clear the form
+
+
+
+
+
+
+
+

@@ -1,0 +1,193 @@
+<div class="row">
+  <div class="col">
+    <div class="container-sm containerclass">
+      <div class="card">
+        <div class="card-header cardheaderclass">Form Data</div>
+        <div class="card-body">
+          <h5 class="card-title">Enter the form deatails</h5>
+          <form [formGroup]="formdata" (ngSubmit)="Onsubmit()">
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First name"
+                  aria-label="First name"
+                  formControlName="firstname"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last name"
+                  aria-label="Last name"
+                  formControlName="lastname"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email"
+                  aria-label="Email"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div class="row" style="padding-top: 10px">
+              <div class="col">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Age"
+                  aria-label="age"
+                  formControlName="age"
+                  maxlength="2"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Mobile number"
+                  aria-label="mobilenumber"
+                  formControlName="mobilenumber"
+                  maxlength="10"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="date"
+                  class="form-control"
+                  placeholder="Dob"
+                  aria-label="dob"
+                  formControlName="dob"
+                />
+              </div>
+            </div>
+            <div class="row" style="align-items: center">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="place"
+                  aria-label="place"
+                  formControlName="place"
+                />
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>select Gender</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option *ngFor="let gender of genderlist" [value]="gender">
+                      {{ gender }} </mat-option>
+                  </mat-select> 
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <button *ngIf="!isedit" class="btn btn-primary" type="submit">
+                  submit
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  *ngIf="isedit"
+                  (click)="Onsave()"
+                  class="btn btn-success"
+                  type="button"
+                >
+                  Save
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  class="btn btn-danger"
+                  (click)="Oncancel()"
+                  type="button"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-info" id="alert" role="alert">
+      A simple info alert—check it out!
+    </div>
+  </div>
+
+  <div class="col" style="padding-top: 10px">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
+          <th scope="col">Email</th>
+          <th scope="col">M.number</th>
+
+          <th scope="col">place</th>
+          <th scope="col">age</th>
+
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userdata of listOfdata; let i = index">
+          <th scope="row">{{ i }}</th>
+
+          <td>{{ userdata?.firstname }}</td>
+          <td>{{ userdata?.lastname }}</td>
+          <td>{{ userdata?.email }}</td>
+          <td>{{ userdata?.mobilenumber }}</td>
+
+          <td>{{ userdata?.place }}</td>
+          <td>{{ userdata?.age }}</td>
+          <td (click)="Onedit(i)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-pencil-square"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+              />
+            </svg>
+          </td>
+
+          <td (click)="Ondelete(i)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-trash"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+              />
+            </svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

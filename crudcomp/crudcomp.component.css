@@ -1,0 +1,9 @@
+.containerclass{
+    padding-top: 5px;
+}
+.cardheaderclass{
+    background-color: #217AB8;
+    color: white;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.5rem;
+}
